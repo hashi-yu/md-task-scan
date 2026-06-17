@@ -4,7 +4,7 @@
   "description": "A tiny zero-dependency CLI for listing Markdown tasks.",
   "type": "module",
   "bin": {
-    "md-task-scan": "./src/cli.mjs"
+    "md-task-scan": "src/cli.mjs"
   },
   "scripts": {
     "test": "node --test"
