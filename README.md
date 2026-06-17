@@ -18,7 +18,7 @@ npm install -g md-task-scan
 For local development:
 
 ```sh
-git clone <repo-url>
+git clone https://github.com/hashi-yu/md-task-scan.git
 cd md-task-scan
 npm test
 ```
@@ -67,6 +67,18 @@ Print JSON:
 md-task-scan --json README.md
 ```
 
+Print JSON Lines for scripts and agents:
+
+```sh
+md-task-scan --all --jsonl README.md
+```
+
+Print stable summary counts:
+
+```sh
+md-task-scan --summary README.md
+```
+
 Fail when open tasks are found, which is useful in CI:
 
 ```sh
@@ -85,6 +97,19 @@ With `--all`, each task includes its checkbox state:
 ```txt
 README.md:12  [ ] Write tests
 README.md:16  [x] Ship release
+```
+
+With `--jsonl`, each task is printed as one JSON object per line:
+
+```jsonl
+{"source":"README.md","line":12,"indent":0,"done":false,"status":"open","text":"Write tests"}
+{"source":"README.md","line":16,"indent":0,"done":true,"status":"done","text":"Ship release"}
+```
+
+With `--summary`, the output is a single stable key=value line:
+
+```txt
+files=1 total=2 open=1 done=1 matched=1 filter=open
 ```
 
 ## Development

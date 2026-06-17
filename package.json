@@ -1,6 +1,6 @@
 {
   "name": "md-task-scan",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A tiny zero-dependency CLI for listing Markdown tasks.",
   "type": "module",
   "bin": {

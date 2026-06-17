@@ -38,6 +38,7 @@ export function scanMarkdown(content, source = "stdin", options = {}) {
       line: index + 1,
       indent: indent.length,
       done,
+      status: done ? "done" : "open",
       text: text.trim()
     });
   });

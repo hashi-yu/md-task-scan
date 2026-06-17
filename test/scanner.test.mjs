@@ -20,6 +20,7 @@ test("lists unchecked Markdown tasks", () => {
       line: 3,
       indent: 0,
       done: false,
+      status: "open",
       text: "Write tests"
     },
     {
@@ -27,6 +28,7 @@ test("lists unchecked Markdown tasks", () => {
       line: 5,
       indent: 2,
       done: false,
+      status: "open",
       text: "Update docs"
     }
   ]);
@@ -59,6 +61,7 @@ test("ignores tasks inside fenced code blocks", () => {
       line: 4,
       indent: 0,
       done: false,
+      status: "open",
       text: "Real task"
     }
   ]);
