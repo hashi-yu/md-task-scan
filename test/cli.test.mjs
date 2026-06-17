@@ -55,3 +55,9 @@ test("rejects multiple status flags", async () => {
     /Choose only one of --open, --done, or --all/
   );
 });
+
+test("prints package version", async () => {
+  const { stdout } = await execFileAsync("node", [CLI, "--version"]);
+
+  assert.equal(stdout.trim(), "0.2.0");
+});

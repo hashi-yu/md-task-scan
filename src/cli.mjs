@@ -25,6 +25,11 @@ const STATUS_FLAGS = new Map([
   ["--all", "all"]
 ]);
 
+async function readPackageVersion() {
+  const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
+  return JSON.parse(packageJson).version;
+}
+
 async function readStdin() {
   const chunks = [];
 
@@ -112,7 +117,7 @@ async function main() {
   }
 
   if (options.version) {
-    console.log("0.1.0");
+    console.log(await readPackageVersion());
     return;
   }
 
