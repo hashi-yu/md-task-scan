@@ -1,8 +1,8 @@
 # md-task-scan
 
-A tiny zero-dependency CLI for listing open Markdown tasks.
+A tiny zero-dependency CLI for listing Markdown tasks.
 
-It finds unchecked task list items like:
+It finds task list items like:
 
 ```md
 - [ ] Write tests
@@ -31,6 +31,24 @@ Scan one or more Markdown files:
 md-task-scan README.md docs/plan.md
 ```
 
+By default, it prints unchecked tasks. You can also make that explicit:
+
+```sh
+md-task-scan --open README.md
+```
+
+Print checked tasks:
+
+```sh
+md-task-scan --done README.md
+```
+
+Print all tasks:
+
+```sh
+md-task-scan --all README.md
+```
+
 Read from standard input:
 
 ```sh
@@ -54,6 +72,13 @@ md-task-scan --fail-on-found README.md
 ```txt
 README.md:12  Write tests
 README.md:18  Update release notes
+```
+
+With `--all`, each task includes its checkbox state:
+
+```txt
+README.md:12  [ ] Write tests
+README.md:16  [x] Ship release
 ```
 
 ## Development

@@ -1,7 +1,8 @@
 const TASK_LINE_PATTERN = /^(\s*)([-*+]|\d+[.)])\s+\[([ xX])\]\s+(.*)$/;
 const FENCE_PATTERN = /^\s*(```|~~~)/;
 
-export function scanMarkdown(content, source = "stdin") {
+export function scanMarkdown(content, source = "stdin", options = {}) {
+  const status = options.status ?? "open";
   const tasks = [];
   let inFence = false;
 
@@ -22,8 +23,13 @@ export function scanMarkdown(content, source = "stdin") {
     }
 
     const [, indent, , marker, text] = match;
+    const done = marker.toLowerCase() === "x";
 
-    if (marker.toLowerCase() === "x") {
+    if (status === "open" && done) {
+      return;
+    }
+
+    if (status === "done" && !done) {
       return;
     }
 
@@ -31,6 +37,7 @@ export function scanMarkdown(content, source = "stdin") {
       source,
       line: index + 1,
       indent: indent.length,
+      done,
       text: text.trim()
     });
   });
