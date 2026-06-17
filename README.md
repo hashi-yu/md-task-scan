@@ -25,6 +25,12 @@ npm test
 
 ## Usage
 
+Try the included sample:
+
+```sh
+md-task-scan examples/TODO.md
+```
+
 Scan one or more Markdown files:
 
 ```sh
